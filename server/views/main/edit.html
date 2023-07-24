@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.cdnfonts.com/css/satoshi?styles=135009,135005,135007,135002,135000" rel="stylesheet" />
+    <link rel="stylesheet" href="css/tailwind/tailwind.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-tailwind.png" />
+    <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="../common/bootstrap.min.css" />
+    <script src="../common/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="antialiased bg-body text-body font-body">
+    <div class="py-12 md:py-24 lg:pb-32 bg-white">
+      <section class="py-12 md:py-24 lg:pb-12 b g">
+        <div class="container mx-auto px-4">
+          <div class="max-w-md lg:max-w-lg xl:max-w-none mx-auto">
+            <h3 class="font-heading text-4xl text-black font-bold mb-12">Editing</h3>
+            <div class="flex flex-wrap -mx-4">
+              <div class="w-full xl:w-1/2 px-4 mb-8 xl:mb-0">
+                <div class="max-w-2xl">
+                  <form action="">
+                    <div class="mb-10 pb-12 border-b border-blueGray-800">
+                      <h6 class="font-bold text-black mb-6">Research</h6>
+                      <div class="pb-12 mb-8 border-b border-blueGray-800">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Title</label>
+                        <input
+                          id="form-title"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="email"
+                        />
+                      </div>
+                      <h6 class="font-bold text mb-6">Personal Information</h6>
+                      <div class="flex flex-wrap -mx-2 mb-6">
+                        <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
+                          <label class="block mb-2 text-gray-400 text-sm font-medium" for="">First Name</label>
+                          <input
+                            id="form-first-name"
+                            class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                            type="text"
+                          />
+                        </div>
+                        <div class="w-full md:w-1/2 px-2">
+                          <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Last Name</label>
+                          <input
+                            id="form-last-name"
+                            class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Email</label>
+                        <input
+                          id="form-email"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="text"
+                        />
+                      </div>
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Department</label>
+                        <!-- <input
+                          id="form-department"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="text"
+                        /> -->
+                        <select
+                          class="h-10 px-4 py-2 w-full text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          id="form-department"
+                        >
+                          <!-- <option value="faculty1">faculty1</option>
+                          <option value="faculty2">faculty2</option>
+                          <option value="faculty3">faculty3</option> -->
+                        </select>
+                      </div>
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Office</label>
+                        <input
+                          id="form-office"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="text"
+                        />
+                      </div>
+                      <div class="flex flex-wrap -mx-2 mb-6">
+                        <div class="w-full md:w-1/2 px-2">
+                          <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Faculty</label>
+                          <select
+                            class="h-10 px-4 py-2 w-full text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                            id="form-faculty"
+                          >
+                            <option value="faculty1">faculty1</option>
+                            <option value="faculty2">faculty2</option>
+                            <option value="faculty3">faculty3</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap -mx-2 mb-6">
+                        <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0"></div>
+                        <div class="w-full md:w-1/2 px-2"></div>
+                      </div>
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Phone</label>
+                        <input
+                          id="form-phone"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Position</label>
+                        <input
+                          id="form-position"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Contact</label>
+                        <input
+                          id="form-contact"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Information</label>
+                        <input
+                          id="form-information"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Teaching</label>
+                        <input
+                          id="form-teaching"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Contribution</label>
+                        <input
+                          id="form-contribution"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Bio</label>
+                        <input
+                          id="form-bio"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+
+                      <div class="mb-6">
+                        <label class="block mb-2 text-gray-400 text-sm font-medium" for="">Contact Information</label>
+                        <input
+                          id="form-contact-information"
+                          class="h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                          type="tel"
+                        />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="w-full xl:w-1/2 px-4">
+                <div class="max-w-lg mx-auto xl:mr-0">
+                  <h6 class="font-bold text-black mb-5">Publications Details</h6>
+                  <div class="bg-blueGray-100">
+                    <div class="flex items-start p-8 border-b border-blueGray-800">
+                      <img
+                        class="block h-28"
+                        id="form-avatar"
+                        src="images/110421-Shulgina-056-copy-624x624.webp"
+                        alt=""
+                      />
+
+                      <div class="w-full pl-5">
+                        <div class="flex mb-4 items-start justify-between">
+                          <div class="mr-10">
+                            <a class="inline-block mb-1 text-sm font-bold text-black" href="#" id="card-name">Titile</a>
+                            <span class="block text-sm font-medium text-gray-400">Associate Professor</span>
+                            <span class="block text-sm font-medium text-gray-400">The latest news</span>
+                          </div>
+                          <button class="inline-block"></button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="p-8" id="avatar">
+                      <a
+                        class="block px-6 py-3 text-center font-bold text-black bg-yellow-500 hover:bg-yellow-600 transition duration-200 w-full"
+                        href="javascript: void(0)"
+                      >
+                        Upload
+                      </a>
+                    </div>
+
+                    <input type="file" type="hidden" id="input-file-avatar" style="height: 0" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container mx-auto">
+        <div action="">
+          <div class="mb-6">
+            <label class="block text-gray-400 text-sm font-medium mb-2" for="">Publications</label>
+
+            <!-- <textarea
+              class="w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+              rows="3"
+              placeholder="Write something..."
+            ></textarea> -->
+
+            <!-- 这里上传刊物 -->
+            <ol start="1" class="mt-6" id="list">
+              <!-- <li class="" style="color: white">
+                <span>1. 名称：1111，地址：1111</span>
+                <a
+                  class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded"
+                  href="http://localhost:3001/upload/7985d99ef962195fd2ddc240a.jpeg"
+                  download="sss.jpeg"
+                >
+                  download
+                </a>
+              </li> -->
+            </ol>
+
+            <button
+              class="mt-6 p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded"
+              id="add-file"
+            >
+              Add publication
+            </button>
+
+            <input type="file" type="hidden" id="input-file" style="height: 0" />
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-gray-400 text-sm font-medium mb-2" for="">Research areas</label>
+            <input
+              id="form-research-areas"
+              class="w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+              type="text"
+              placeholder="Write a text"
+            />
+          </div>
+
+          <button
+            id="submit"
+            class="inline-block px-4 py-2 text-sm text-center font-bold text-black bg-yellow-500 hover:bg-yellow-600 transition duration-200"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../common/axios.min.js"></script>
+    <script src="../common/jquery.min-1.12.1.js"></script>
+    <script src="../common/utils.js"></script>
+
+    <script>
+      $(function () {
+        window.staffEditInfo = {};
+
+        function renderPage() {
+          const data = window.staffEditInfo;
+          $('#card-name').text(data.name || '');
+          $('#form-title').val(data.name || '');
+          $('#form-email').val(data.email || '');
+          if (data.avatar) {
+            $('#form-avatar').attr('src', data.avatar);
+          }
+
+          $('#form-title').val(data.title);
+          $('#form-first-name').val(data.firstName);
+          $('#form-last-name').val(data.lastName);
+          $('#form-email').val(data.email);
+
+          $('#form-office').val(data.office);
+
+          $('#form-faculty').val(data.faculty);
+
+          $('#form-phone').val(data.phone);
+          $('#form-position').val(data.position);
+          $('#form-contact').val(data.contact);
+          $('#form-information').val(data.information);
+          $('#form-teaching').val(data.teaching);
+          $('#form-bio').val(data.bio);
+          $('#form-contact-information').val(data.contactInformation);
+          $('#form-contribution').val(data.contribution);
+          $('#form-research-areas').val(data.researchAreas);
+
+          if (data.publications) {
+            const list = JSON.parse(data.publications).map((item, index) => {
+              return `<li class="mt-4" style="color: white">
+                <span>${item.name}</span>
+                <a class="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded" href="${item.src}" download="${item.name}">
+                  download
+                </a>
+              </li>`;
+            });
+
+            $('#list').append(list.join(''));
+          }
+
+          // 获取院系的信息并展示
+          axios.get(`${location.origin}/api/common/college/enum`, {}).then((res) => {
+            console.log('res=>', res);
+
+            var _data = res.data;
+            if (res.status === 200) {
+              var list = _data.list;
+
+              list = list.map((item) => {
+                return `<option value="${item.id}">${item.name}</option>`;
+              });
+
+              $('#form-department').append(list);
+              $('#form-department').val(data.department);
+            } else {
+              myAlert(_data.msg);
+            }
+          });
+        }
+
+        // 获取当前的用户的信息
+        var userId = localStorage.getItem('userId');
+
+        refreshUserInfo(() => {
+          renderPage();
+        });
+
+        function getParams() {
+          const params = {};
+
+          const publications = [];
+
+          $('#list li').each((_, item) => {
+            publications.push({
+              name: $(item).children('span').text(),
+              src: $(item).children('a').attr('href'),
+            });
+          });
+
+          params.avatar = $('#form-avatar').attr('src');
+
+          params.title = $('#form-title').val();
+          params.firstName = $('#form-first-name').val();
+          params.lastName = $('#form-last-name').val();
+          params.email = $('#form-email').val();
+          params.department = $('#form-department').val();
+          params.office = $('#form-office').val();
+          params.faculty = $('#form-faculty option:selected').val();
+          params.phone = $('#form-phone').val();
+          params.position = $('#form-position').val();
+          params.contact = $('#form-contact').val();
+          params.information = $('#form-information').val();
+          params.teaching = $('#form-teaching').val();
+          params.bio = $('#form-bio').val();
+          params.contactInformation = $('#form-contact-information').val();
+          params.contribution = $('#form-contribution').val();
+          params.publications = publications.length ? JSON.stringify(publications) : ''; // json字符串，保存list
+          params.researchAreas = $('#form-research-areas').val();
+
+          Object.keys(params).forEach(
+            (k) => (params[k] === null || params[k] === '' || params[k] === undefined) && delete params[k],
+          );
+
+          return params;
+        }
+
+        $('#add-file').on('click', function (e) {
+          e.stopPropagation();
+          $('#input-file').click();
+        });
+
+        $('#input-file').change((e) => {
+          const rawFile = $('#input-file')[0].files[0];
+          // const files = e.target.files;
+          // const rawFile = files[0];
+
+          // let formData = new FormData();
+          var formData = new FormData();
+          formData.append('file', rawFile);
+
+          axios({
+            method: 'post',
+            url: `${location.origin}/api/upLoad/file`,
+            data: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              // Authorization: localStorage.getItem('authorization'),
+            },
+          }).then((res) => {
+            const data = res.data;
+            var index = $('#list li').length;
+
+            $('#list').append(`<li class="mt-4" style="color: white">
+                <span>${index + 1}. 名称：${data.name}，地址：${data.url}</span>
+                <a class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded" href="${
+                  data.url
+                }" download="${data.name}">
+                  download
+                </a>
+              </li>`);
+          });
+        });
+
+        // 头像上传
+        $('#avatar').on('click', function (e) {
+          e.stopPropagation();
+          $('#input-file-avatar').click();
+        });
+
+        $('#input-file-avatar').change((e) => {
+          const rawFile = $('#input-file-avatar')[0].files[0];
+          var formData = new FormData();
+          formData.append('file', rawFile);
+          axios({
+            method: 'post',
+            url: `${location.origin}/api/upLoad/file`,
+            data: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then((res) => {
+            window.staffEditInfo.avatar = res.data.url;
+            renderPage();
+            // var index = $('#list li').length;
+            // $('#list').append(`<li class="mt-4" style="color: white">
+            //     <span>${index + 1}. 名称：${data.name}，地址：${data.url}</span>
+            //     <a class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded" href="${
+            //       data.url
+            //     }" download="${data.name}">
+            //       download
+            //     </a>
+            //   </li>`);
+          });
+        });
+
+        $('#submit').on('click', function () {
+          let params = getParams();
+          axios.post(`${location.origin}/api/users/edit`, { ...params, id: userId }).then((res) => {
+            console.log('res=>', res);
+            var data = res.data;
+            if (res.status === 200) {
+              myAlert('update successful');
+
+              location.href = './index.html';
+            } else {
+              myAlert(data.msg);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

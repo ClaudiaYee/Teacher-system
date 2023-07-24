@@ -1,0 +1,17 @@
+const menuBtn = document.querySelector('.menu-btn');
+const navLinks = document.querySelectorAll('.nav a');
+let menuOpen = false;
+
+menuBtn.addEventListener('click', toggleMenu);
+
+navLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+function toggleMenu() {
+    if (!menuOpen) {
+        menuBtn.classList.add('nav-open');
+        menuOpen = true;
+    } else {
+        menuBtn.classList.remove('nav-open');
+        menuOpen = false;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_eidt.css">
+    <title>Edit Staff Information</title>
+</head>
+<body>
+    <header>
+        <!-- Add header content similar to the main page -->
+    </header>
+    
+    <main class="edit-staff-container">
+        <h1>Edit Staff Information</h1>
+        <p>
+            Use the form below to update the staff member's profile. Be sure to provide accurate and up-to-date information.
+        </p>
+        <form id="edit-staff-form">
+            <div class="form-group">
+                <label for="basic-info">Basic Information</label>
+                <textarea id="basic-info" name="basicInfo" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="text">Additional Text</label>
+                <textarea id="text" name="additionalText" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="job-title">Job Title:</label>
+                <input type="text" id="job-title" name="job-title" list="job-titles">
+                <datalist id="job-titles">
+                  <option value="Software Engineer">
+                  <option value="Project Manager">
+                  <option value="Marketing Specialist">
+                  <!-- Add more job titles as needed -->
+                </datalist>
+            </div>
+            <div class="form-group">
+                 <label for="department">Department:</label>
+                <input type="text" id="department" name="department" list="departments">
+                <datalist id="departments">
+                  <option value="Engineering">
+                  <option value="Marketing">
+                  <option value="Human Resources">
+                  <!-- Add more departments as needed -->
+                </datalist>
+            </div>
+            <button type="submit">Submit Changes</button>
+        </form>
+    </main>
+    
+    <footer>
+        <!-- Add footer content similar to the main page -->
+    </footer>
+    <script src="scripts.js"></script>
+    <!-- Include a popular rich text editor library like Quill -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</body>
+<script src="profile.js"></script>
+
+</html>
+

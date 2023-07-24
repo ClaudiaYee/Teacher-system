@@ -1,0 +1,56 @@
+/* Edit Staff Information Page */
+.edit-staff-container {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.edit-staff-container h1 {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group input[type="file"] {
+  width: auto;
+}
+
+.form-group button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#edit-staff-form button[type="submit"] {
+  background-color: #0077cc;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#edit-staff-form button[type="submit"]:hover {
+  background-color: #005fa3;
+}

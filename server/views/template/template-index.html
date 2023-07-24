@@ -1,0 +1,153 @@
+<!-- 模板选择页面 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="shuffle-for-bootstrap.png" />
+
+    <style>
+      #header {
+        display: flex;
+      }
+      #header nav {
+        flex: 1;
+      }
+      .name-avatar {
+        display: flex;
+        padding: 20px;
+        flex-direction: row;
+
+        justify-content: flex-end;
+        align-items: center;
+      }
+      #avatar {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        margin-left: 20px;
+      }
+      #template-select {
+        border-top: 1px solid gray;
+      }
+
+      #template-select .col {
+        border: 10px solid white;
+        height: 200px;
+        background-color: aquamarine;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      #template-select .col.active {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="">
+      <section class="pb-20 position-relative overflow-hidden bg-white">
+        <div id="header">
+          <nav class="position-relative navbar py-10 navbar-expand-lg navbar-dark bg-transparent" style="z-index: 1">
+            <div class="container">
+              <a class="d-none d-xl-block" href="#">
+                <img src="images/bu-huo.PNG" alt="" width="116" class="w-auto" />
+              </a>
+
+              <a class="d-xl-none navbar-brand" href="#"><img src="images/bu-huo.PNG" alt="" width="116" /></a>
+
+              <button class="btn p-0 d-lg-none navbar-burger">
+                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.5 7C3.22386 7 3 6.77614 3 6.5C3 6.22386 3.22386 6 3.5 6H20.5C20.7761 6 21 6.22386 21 6.5C21 6.77614 20.7761 7 20.5 7H3.5ZM3.5 12C3.22386 12 3 11.7761 3 11.5C3 11.2239 3.22386 11 3.5 11H20.5C20.7761 11 21 11.2239 21 11.5C21 11.7761 20.7761 12 20.5 12H3.5ZM3 16.5C3 16.7761 3.22386 17 3.5 17H20.5C20.7761 17 21 16.7761 21 16.5C21 16.2239 20.7761 16 20.5 16H3.5C3.22386 16 3 16.2239 3 16.5Z"
+                    fill="#fff"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </nav>
+
+          <div class="name-avatar">
+            <span id="name" class="text-white">1111</span>
+            <img id="avatar" class="text-white" src="images/bu-huo.PNG" />
+          </div>
+        </div>
+        <div class="position-relative container" style="z-index: 1"></div>
+
+        <div id="template-select">
+          <div class="container text-center">
+            <div class="row row-cols-2">
+              <div class="col" data-id="1">Template1</div>
+              <div class="col" data-id="2">Template2</div>
+              <div class="col" data-id="3">Template3</div>
+              <div class="col" data-id="4">Template4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="../common/axios.min.js"></script>
+    <script src="../common/jquery.min-1.12.1.js"></script>
+    <script src="../common/utils.js"></script>
+
+    <script>
+      $(function () {
+        var userId = localStorage.getItem('userId');
+
+        function pageRender() {
+          var userInfo = localStorage.getItem('userInfo');
+
+          if (!userId) {
+            myAlert('please login first');
+            return;
+          } else {
+            userInfo = JSON.parse(userInfo);
+            $(`#template-select .col`).removeClass('active');
+            if (userInfo.template > 0) {
+              $($(`#template-select .col`).get(userInfo.template - 1)).addClass('active');
+            }
+          }
+        }
+        pageRender();
+
+        $('#template-select .col').on('click', function (e) {
+          const templateId = $(this).data('id');
+
+          // 保存/更新当前用户选择的渲染模板
+          axios
+            .post(`${location.origin}/api/users/edit`, {
+              template: templateId,
+              id: userId,
+            })
+            .then((res) => {
+              console.log('res=>', res);
+              var data = res.data;
+              if (res.status === 200) {
+                myAlert('update successful');
+
+                refreshUserInfo(() => {
+                  pageRender();
+                  setTimeout(() => {
+                    location.href = '../main/edit.html';
+                  }, 1000);
+                });
+              } else {
+                myAlert(data.msg);
+              }
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
