@@ -229,10 +229,10 @@
               placeholder="Write something..."
             ></textarea> -->
 
-            <!-- 这里上传刊物 -->
+            <!-- Upload publications here -->
             <ol start="1" class="mt-6" id="list">
               <!-- <li class="" style="color: white">
-                <span>1. 名称：1111，地址：1111</span>
+                <span>1. Name：1111，address：1111</span>
                 <a
                   class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded"
                   href="http://localhost:3001/upload/7985d99ef962195fd2ddc240a.jpeg"
@@ -282,6 +282,38 @@
       $(function () {
         window.staffEditInfo = {};
 
+        // Global event binding
+        $(document).on('click', '.remove', function () {
+          console.log('this', $(this));
+          $(this).parent().remove();
+        });
+
+        // Profile picture upload
+        $(document).on('click', '.poster-add-btn', function (e) {
+          e.stopPropagation();
+          $(this).siblings('.poster-add-input').click();
+        });
+
+        $(document).on('change', '.poster-add-input', (e) => {
+          var $this = $(e.target);
+
+          const rawFile = e.target.files[0];
+
+          var formData = new FormData();
+          formData.append('file', rawFile);
+          axios({
+            method: 'post',
+            url: `${location.origin}/api/upLoad/file`,
+            data: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then((res) => {
+            var data = res.data;
+            $this.prev().replaceWith(`<img class="img-poster" src="${data.url}" style="width: 100px; height: 100px"/>`);
+          });
+        });
+
         function renderPage() {
           const data = window.staffEditInfo;
           $('#card-name').text(data.name || '');
@@ -312,18 +344,32 @@
 
           if (data.publications) {
             const list = JSON.parse(data.publications).map((item, index) => {
-              return `<li class="mt-4" style="color: white">
-                <span>${item.name}</span>
-                <a class="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded" href="${item.src}" download="${item.name}">
+              return `<li class="mt-4" style="color: black">
+                <span>${index + 1}</span>
+                <span class="name-address">${item.name}</span>
+                <a class="p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded" href="${
+                  item.src
+                }" download="${item.name}">
                   download
                 </a>
+                <span class="remove ml-2 p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded" >
+                  remove
+                </span>
+                <p>name:</p>
+                <input
+                    class="name h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                    type="tel"
+                    value="${item.inputName}"
+                  />
+                <p>poster:</p>
+                <img class="img-poster" src="${item.posterUrl}" style="width: 100px; height: 100px"/>
               </li>`;
             });
 
             $('#list').append(list.join(''));
           }
 
-          // 获取院系的信息并展示
+          // Get department information and present it
           axios.get(`${location.origin}/api/common/college/enum`, {}).then((res) => {
             console.log('res=>', res);
 
@@ -343,7 +389,7 @@
           });
         }
 
-        // 获取当前的用户的信息
+        // Gets information about the current user
         var userId = localStorage.getItem('userId');
 
         refreshUserInfo(() => {
@@ -355,12 +401,16 @@
 
           const publications = [];
 
-          $('#list li').each((_, item) => {
-            publications.push({
-              name: $(item).children('span').text(),
-              src: $(item).children('a').attr('href'),
+          if ($('#list li').length > 0) {
+            $('#list li').each((_, item) => {
+              publications.push({
+                name: $(item).children('span.name-address').text(),
+                src: $(item).children('a.download').attr('href'),
+                posterUrl: $(item).children('img.img-poster').attr('src'),
+                inputName: $(item).children('.name').val(),
+              });
             });
-          });
+          }
 
           params.avatar = $('#form-avatar').attr('src');
 
@@ -379,7 +429,7 @@
           params.bio = $('#form-bio').val();
           params.contactInformation = $('#form-contact-information').val();
           params.contribution = $('#form-contribution').val();
-          params.publications = publications.length ? JSON.stringify(publications) : ''; // json字符串，保存list
+          params.publications = publications.length ? JSON.stringify(publications) : '[]'; // json字符串，保存list
           params.researchAreas = $('#form-research-areas').val();
 
           Object.keys(params).forEach(
@@ -415,18 +465,39 @@
             const data = res.data;
             var index = $('#list li').length;
 
-            $('#list').append(`<li class="mt-4" style="color: white">
-                <span>${index + 1}. 名称：${data.name}，地址：${data.url}</span>
-                <a class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded" href="${
+            $('#list').append(`<li class="mt-4" style="color: black;">
+                <span>${index + 1}</span>
+                <span class="name-address">name：${data.name}，address：${data.url}</span>
+
+                <a class="download p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded" href="${
                   data.url
                 }" download="${data.name}">
                   download
                 </a>
+
+                <span class="remove ml-2 p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded">
+                  remove
+                </span>
+                <br/>
+
+                <p>name:</p>
+                <input
+                    class="name h-10 w-full px-4 py-2 text-sm text-gray-400 border border-blueGray-800 bg-transparent outline-none"
+                    type="tel"
+                  />
+                <p>poster:</p>
+
+                <button
+                  class="poster-add-btn mt-1 p-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-0.5 px-2 rounded"
+                >
+                  Add poster
+                </button>
+                <input type="file" type="hidden" class="poster-add-input" style="height: 0;width: 0" />
               </li>`);
           });
         });
 
-        // 头像上传
+        // Profile picture upload
         $('#avatar').on('click', function (e) {
           e.stopPropagation();
           $('#input-file-avatar').click();
@@ -446,15 +517,6 @@
           }).then((res) => {
             window.staffEditInfo.avatar = res.data.url;
             renderPage();
-            // var index = $('#list li').length;
-            // $('#list').append(`<li class="mt-4" style="color: white">
-            //     <span>${index + 1}. 名称：${data.name}，地址：${data.url}</span>
-            //     <a class="p-4 bg-blue-500 hover:bg-blue-700 text-black font-bold py-0.5 px-2 rounded" href="${
-            //       data.url
-            //     }" download="${data.name}">
-            //       download
-            //     </a>
-            //   </li>`);
           });
         });
 
